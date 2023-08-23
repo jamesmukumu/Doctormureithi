@@ -1,0 +1,55 @@
+.nav-container {
+  position: absolute;
+  top: 0;
+  left: 100%; /* Change right: 0; to left: 100%; */
+  background-color:bisque;
+  padding: 20px;
+  transition: left 0.5s ease; /* Reduced the transition time for testing */
+  z-index: 1;
+}
+
+.nav-container.active {
+  left: 0;
+}
+.back{
+  font-size: 30px;
+}
+
+
+
+
+.nav-container.active {
+  right: 0;
+}
+
+
+.nav-toggle {
+  display: none; 
+  
+  /* position: relative;
+  */
+  cursor: pointer;
+}
+.bars{
+  font-size: 35px;
+ 
+}
+.t{
+text-decoration: none;
+color: blue;
+
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block; 
+  }
+
+  .nav-container {
+    width: 300px;
+  }
+
+ 
+  .image-container.active {
+    opacity: 0.5;
+  }
+}
