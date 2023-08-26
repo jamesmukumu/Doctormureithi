@@ -20,9 +20,10 @@ try {
  alternativephoneNumber:req.body.alternativephoneNumber,
  idNumber:req.body.idNumber,
  treatments:req.body.treatments,
- 
-
-    })
+ Payment:req.body.Payment,
+ Balance:req.body.Balance,
+ NextVisitDate:req.body.NextVisitDate
+   })
 
     const savedPatient = await Patient.save()
     res.json({message:'patient saved'})
@@ -159,6 +160,52 @@ res.json({message:'Patient Found',data:foundnumber})
 
 
 })
+
+
+  
+//updata client Balance
+router.patch('/balance',async(req,res)=>{
+const patchedbalance = req.query.Balance
+try {
+    
+    const patchedBalance = await patient.findOneAndUpdate(
+       { Balance:patchedbalance},
+        {$set:req.body},
+        {new:true}
+    )
+    .populate('treatments')
+
+    res.json({message:'Updated'})
+} catch (error) {
+   res.json({error:'Not updated'}) 
+}
+
+
+})
+
+
+router.patch('/visitdate',async(req,res)=>{
+const patchvisitdate = req.query.NextVisitDate
+try {
+    const patchedVisitdate = await patient.findOneAndUpdate(
+        {NextVisitDate:patchvisitdate},
+        {$set:req.body},
+        {new:true}
+    )
+
+    res.json({message:'Updated'})
+} catch (error) {
+    res.json({message:'Not found'})
+}
+
+
+
+})
+
+
+
+
+
 
 
 

@@ -10,6 +10,7 @@ const [clientdata,setClientdata] = useState([])
  const [message,setMessage] = useState('')
 const [firstname,setFirstname] = useState('')
 
+
     async function Fetchinfo(e){
         e.preventDefault()
         
@@ -42,6 +43,7 @@ const [firstname,setFirstname] = useState('')
 
 
 
+
 return(
 <div>
 <form onSubmit={Fetchinfo} className="form-container">
@@ -65,12 +67,26 @@ onChange={(e)=>setFirstname(e.target.value)}
 <div>
     <p>Firstname:{item.Firstname}</p>
     <p>Secondname:{item.Secondname}</p>
+    <p>Age:{item.age}</p>
+    <p>Phonenumber:{item.phonenumber}</p>
+    <p>IDnumber:{item.idNumber}</p>
+    <p>Residence:{item.residence}</p>
+    <p>AlternativePhone:{item.alternativephoneNumber}</p>
+    <p>Payment:{item.Payment}</p>
+    <p>Balance:{item.Balance}</p>
+    <p>Next visit Date:{item.NextVisitDate}</p>
+    <p>Symptoms:{item.treatments.symptom[0]}</p>
+    <p>Labtest:{item.treatments.labtest}</p>
+    <p>Labtestdes:{item.treatments.labtestdesc[0]}</p>
+    <p>Cause:{item.treatments.cause}</p>
+    <p>Medication:{item.treatments.medicationOffered}</p>
+    <p>DurationofSickness:{item.treatments.durationofSickness}</p>
+   
 </div>
 
 ))}
  <Link to='/navigation' className="t">Back</Link>
 </form>
-
 
 
 

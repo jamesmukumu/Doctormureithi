@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import  axios from "axios"
+import { Link } from "react-router-dom";
+
 
 function Newpatient(){
 const [firstname,setFirstname] = useState('')
@@ -11,6 +13,9 @@ const [residence,setResidence]  = useState('')
 const [alternativephonenumber,setAlternativephonenumber] = useState('')
 const [idnumber,setIdnumber] = useState('')
 const [treatments,setTreatments] = useState('')
+const [payment,setPayment] = useState('')
+const [balance,setBalance] = useState('')
+const [nextdate,setNextvisitdate] = useState('')
 const  [message,setMessage]  = useState('')
 const  [treatmentlenghth,setTreatmentlength] = useState('')
 
@@ -31,7 +36,10 @@ else{
         residence:residence,
         alternativephoneNumber:alternativephonenumber,
         idNumber:idnumber,
-        treatments:treatments
+        treatments:treatments,
+        Payment:payment,
+        Balance:balance,
+        NextVisitDate:nextdate
         
         })
         if(response.data.message === 'patient saved'){
@@ -161,10 +169,44 @@ return(
     
     />
 </div>
+<div>
+    <label>Enter Payment:</label>
+    <input type="number"
+    
+    required
+    onChange={(e)=>setPayment(e.target.value)}
+    
+    />
+</div>
+
+
+<div>
+    <label>Enter Balance:</label>
+    <input type="number"
+    
+    required
+    onChange={(e)=>setBalance(e.target.value)}
+    
+    />
+</div>
+
+
+
+<div>
+    <label>Enter next visit date:</label>
+    <input type="text"
+ 
+    onChange={(e)=>setNextvisitdate(e.target.value)}
+    
+    />
+</div>
+
 
 <button>Submit</button>
-<p>{message}</p>
-<p>{treatmentlenghth}</p>
+<p className="message">{message}</p>
+<p className="message">{treatmentlenghth}</p>
+<Link to='/navigation' className="t">Home</Link>
+
 </form>
 <div>
 

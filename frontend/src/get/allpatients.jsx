@@ -34,6 +34,12 @@ function Allpatients() {
             <th>Age</th>
             <th>idNumber</th>
             <th>alternativephonenumber</th>
+
+            <th>Payment</th>
+            <th>Balance</th>
+        
+            <th>Next Visit date</th>
+            
             <th>Symptom</th>
             <th>labtest</th>
             <th>labtestdesc</th>
@@ -54,7 +60,9 @@ function Allpatients() {
               <td>{item.age}</td>
               <td>{item.idNumber}</td>
               <td>{item.alternativephoneNumber}</td>
-              
+              <td>{item.Payment}</td>
+              <td>{item.Balance}</td>
+              <td>{item.NextVisitDate}</td>
               <td>{item.treatments.symptom[0]}</td>
                 
               <td>{item.treatments.labtest}</td>

@@ -31,7 +31,7 @@ function Navbar() {
   useEffect(() => {
     async function fetchImages() {
       try {
-        const response = await axios.get("http://localhost:5000/allimages");
+        const response = await axios.get("https://abcd-kivm.onrender.com/allimages");
         if (response.data.message === "All images Found") {
           setImagesdata(response.data.data);
         } else {
@@ -49,7 +49,7 @@ function Navbar() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesdata.length);
-    }, 12000);
+    }, 15000);
 
     return () => {
       clearInterval(timer);
@@ -80,7 +80,7 @@ function Navbar() {
             <i>
               <AiOutlinePlus />
             </i>
-            <Link to='/newpatient' className="t">Add a New patient</Link>
+            <Link to='/patient' className="t">Add a New patient</Link>
           </li>
 
           <li>

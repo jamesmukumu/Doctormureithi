@@ -11,6 +11,9 @@ alternativephoneNumber:{type:Number,required:true},
 idNumber:{type:Number,required:false},
 createdAt:{type:Date,default:Date.now},
 treatments: { type: mongoose.Schema.Types.ObjectId, ref: 'Treatment' },
+Payment:{type:Number,required:true},
+Balance:{type:Number,required:true},
+NextVisitDate:{type:[String,Number],required:false}
 
 
 

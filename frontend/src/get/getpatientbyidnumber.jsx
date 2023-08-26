@@ -8,6 +8,10 @@ function Idnumber(){
 const [clientdata,setClientdata] = useState([])
  const [message,setMessage] = useState('')
 const [idnumber,setIdnumber] = useState('')
+const [updatedbalance,setUpdatedbalance] = useState('')
+const [visitdate,setVisitdate] = useState('')
+const [visitdateMessageupdate,setVisitdatemessage] = useState('')
+const [updatemessage,setUpdatedmessage] = useState('')
 
     async function Fetchinfo(e){
         e.preventDefault()
@@ -35,7 +39,81 @@ const [idnumber,setIdnumber] = useState('')
     setMessage('Internal Server Error')
    }
   }
+  //update balance
+  async function Updatepatientinfo(e){
+    e.preventDefault()
+    try {
+        const response = await axios.patch('http://localhost:5000/balance',{
+        Balance:updatedbalance
+        },
+        {
+            params:{Balance:clientdata[0].Balance}
+        })
+    
+    
+        if(response.data.message ==='Updated'){
+         setUpdatedmessage('Details Updated')
+        }
+        else{
+            setUpdatedmessage('Failed To Update Details!!oops')
+        }
+    } catch (error) {
+        setUpdatedmessage('Internal Server Error')
+    }
+     
+      }
+      
 
+      // updating next visit date
+      async function Updatepatientinfo(e){
+        e.preventDefault()
+        try {
+            const response = await axios.patch('http://localhost:5000/balance',{
+            Balance:updatedbalance
+            },
+            {
+                params:{Balance:clientdata[0].Balance}
+            })
+        
+        
+            if(response.data.message ==='Updated'){
+             setUpdatedmessage('Details Updated')
+            }
+            else{
+                setUpdatedmessage('Failed To Update Details!!oops')
+            }
+        } catch (error) {
+            setUpdatedmessage('Internal Server Error')
+        }
+        
+        
+          }
+          
+               //updating Visit date
+        async function Updatevisitdate(e){
+        e.preventDefault()
+        const response = await axios.patch('http://localhost:5000/visitdate',{
+            NextVisitDate:visitdate
+        },
+        {
+            params:{NextVisitDate:clientdata[0].NextVisitDate}
+        }
+        )
+        try {
+            if(response.data.message==='Updated'){
+                setVisitdatemessage('Visit Date Updated')
+            }
+            else{
+                setVisitdatemessage('Failed to update..Try again later!!!')
+            }
+        } catch (error) {
+            setVisitdatemessage('Internal Server Error')
+        }
+        
+        
+        
+        }
+        
 
 
 
@@ -68,17 +146,21 @@ onChange={(e)=>setIdnumber(e.target.value)}
     <h1>Patient Information:</h1>
     <p>Firstname:{item.Firstname}</p>
     <p>Secondname:{item.Secondname}</p>
-    <p>Phonenumber:{item.phonenumber}</p>
-    <p>Residence:{item.residence}</p>
     <p>Age:{item.age}</p>
-    <p>alternativephonenumber:{item.alternativephoneNumber}</p>
-    <p>PatientCreatedat:{item.createdAt}</p>
-    <p>Symptoms presented:{item.treatments.symptom[0]}</p>
-    <p>Labtest Description:{item.treatments.labtestdesc[0]}</p>
-    <p>Labtest Done:{item.treatments.labtest}</p>
-    <p>Cause Of Illness:{item.treatments.cause}</p>
-    <p>Duration of sickness:{item.treatments.durationofSickness}</p>
+    <p>Phonenumber:{item.phonenumber}</p>
+    <p>IDnumber:{item.idNumber}</p>
+    <p>Residence:{item.residence}</p>
+    <p>AlternativePhone:{item.alternativephoneNumber}</p>
+    <p>Payment:{item.Payment}</p>
+    <p>Balance:{item.Balance}</p>
+    <p>Next visit Date:{item.NextVisitDate}</p>
+    <p>Symptoms:{item.treatments.symptom[0]}</p>
+    <p>Labtest:{item.treatments.labtest}</p>
+    <p>Labtestdes:{item.treatments.labtestdesc[0]}</p>
+    <p>Cause:{item.treatments.cause}</p>
     <p>Medication:{item.treatments.medicationOffered}</p>
+    <p>DurationofSickness:{item.treatments.durationofSickness}</p>
+   
 </div>
 
 ))}
@@ -86,6 +168,36 @@ onChange={(e)=>setIdnumber(e.target.value)}
 </form>
 
 
+<form onSubmit={Updatepatientinfo} className="form-container">
+ <h1>Update Clients Balance</h1>
+   <div>
+   <label>Enter New Balance</label>
+<input type="number" 
+onChange={(e)=>setUpdatedbalance(e.target.value)}
+/>
+
+
+   </div>
+<button>Update</button>
+<p className="message">{updatemessage}</p>
+ </form>
+
+  
+ <div>
+   
+   <form onSubmit={Updatevisitdate} className="form-container">
+   <h1>Update Patient's Visit Date</h1>
+  <label>Enter New Visitdate</label>
+  <input type="text" 
+  onChange={(e)=>setVisitdate(e.target.value)}
+  />
+  <button>Update</button>
+  <p className="message">{visitdateMessageupdate}</p>
+   </form>
+  
+  
+  
+    </div>
 
 
 </div>

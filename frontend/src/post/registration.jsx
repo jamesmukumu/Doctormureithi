@@ -146,7 +146,7 @@ return(
         
         <button>Register</button>
         
-        <p>{message}</p>
+        <p className="message">{message}</p>
         
         
         <p>{passswordlength}</p>

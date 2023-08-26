@@ -37,6 +37,7 @@
 .t{
 text-decoration: none;
 color: blue;
+font-size: 27.6px;
 
 }
 @media (max-width: 768px) {

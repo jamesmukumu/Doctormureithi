@@ -122,11 +122,11 @@ return(
 
 <div>
 <p className="message">{message}</p>
-<p>{passswordlength}</p>
+<p className="message">{passswordlength}</p>
 </div>
 <p>Dont Have An account?<Link to="/registration">Register</Link></p>
 
-
+   <p>&copy;Ebenezer Clinic @ 2023</p>
 </form>
 
 
